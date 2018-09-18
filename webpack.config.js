@@ -19,7 +19,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react'],
-            plugins: ["babel-plugin-styled-components", '@babel/plugin-proposal-class-properties', "react-hot-loader/babel"]
+            plugins: ["babel-plugin-styled-components", '@babel/plugin-proposal-class-properties', "react-hot-loader/babel", "@babel/plugin-proposal-optional-chaining"]
           }
         }
       },
