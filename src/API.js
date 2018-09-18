@@ -5,12 +5,20 @@ const CORS_PROXY = 'https://thingproxy.freeboard.io/fetch/';
 
 const getJSON = (...args) => fetch(...args).then(r => r.json());
 
-export const getCoordinates = city => getJSON(`${CORS_PROXY}${GEO_API_URL}${city}`)
+export const getUserCoords = () => new Promise(r => window.navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => r({ latitude, longitude})))
+
+const fetchCoordinates = city => getJSON(`${CORS_PROXY}${GEO_API_URL}${city}`)
   .then((resp) => {
     const { results } = resp;
     if (!results || results.length === 0) throw new Error();
     return results[0].geometry.location;
   })
-  .catch(e => ({ error: 'Bad response' }))
+  .catch(e => ({ error: 'Bad response' }));
 
-export const getWeather = (lat, lng) => getJSON(`${CORS_PROXY}${API_URL}?lat=${lat}&lon=${lng}&limit=5&hours=false&extra=false`, { headers: { 'X-Yandex-API-Key': TOKEN } });
+export const fetchWeatherByCoord = ({lat, lng}) => getJSON(`${CORS_PROXY}${API_URL}?lat=${lat}&lon=${lng}&limit=5&hours=false&extra=false`, { headers: { 'X-Yandex-API-Key': TOKEN } });
+
+export const fetchWeather = (city) => fetchCoordinates(city).then(resp => {
+  if (resp.error) throw new Error();
+  const { lat, lng } = resp;
+  return fetchWeatherByCoord(({ lat, lng }));
+});

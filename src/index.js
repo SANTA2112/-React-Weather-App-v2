@@ -1,12 +1,16 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import './_assets/css/global.css';
 
 import App from './App';
-import { getWeather } from './API';
+import store from './store';
 
-getWeather(23, 56).then(console.log)
+window.store = store;
 
 render(
-  <App />,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.querySelector('#app')
 );
