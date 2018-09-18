@@ -4,7 +4,7 @@ import { fetchWeather, fetchWeatherByCoord } from '../API';
 export const loading = () => ({ type: LOADING });
 export const loaded = () => ({ type: LOADED });
 
-export const getWeather = (data) => dispatch => {
+export const getWeather = (data, counter = 0) => dispatch => {
   dispatch(loading());
   (typeof data === 'string' ? fetchWeather : fetchWeatherByCoord)(data)
     .then(payload => {
@@ -12,7 +12,11 @@ export const getWeather = (data) => dispatch => {
       dispatch(loaded());
     })
     .catch(e => {
-      dispatch({ type: GET_WEATHER, payload: { error: 'Bad response' } });
-      dispatch(loaded());
+      if (counter > 10) {
+        dispatch({ type: GET_WEATHER, payload: { error: 'Bad response' } });
+        dispatch(loaded());
+      } else {
+        getWeather(data, counter + 1)(dispatch);
+      }
     })
 };
