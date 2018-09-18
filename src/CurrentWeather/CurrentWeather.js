@@ -3,8 +3,7 @@ import { Name, Wrapper, Temp, TempWrap, Text } from "./styled";
 import { weatherTranslate } from "../utils";
 
 export default ({ weather }) => {
-  console.log(weather);
-  if(!weather) return null;
+  if(weather.error) return null;
   return (
     <div>
       <Wrapper>
