@@ -22,7 +22,7 @@ const life = lifecycle({
 
 export default compose(
   hot(module),
-  connect(store => ({ weather: store.weather }), { getWeather }),
+  connect(store => ({ weather: store.weather, isLoading: store.loader }), { getWeather }),
   withState('input', 'inputHandler', ''),
   handlers,
   life,
