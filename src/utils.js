@@ -3,8 +3,8 @@ export const weatherBG = {
   "bkn_-ra_n": require('./_assets/images/09n.jpg'),
   "bkn_-sn_d": require('./_assets/images/13d.jpg'),
   "bkn_-sn_n": require('./_assets/images/13n.jpg'),
-  "bkn_d": require('./_assets/images/03d.jpg'),
-  "bkn_n": require('./_assets/images/03n.jpg'),
+  "bkn_d": require('./_assets/images/02d.jpeg'),
+  "bkn_n": require('./_assets/images/02n.jpg'),
   "bkn_ra_d": require('./_assets/images/04d.jpeg'),
   "bkn_ra_n": require('./_assets/images/04n.jpg'),
   "bkn_sn_d": require('./_assets/images/13d.jpg'),
@@ -40,6 +40,34 @@ export const weatherTranslate = {
   "cloudy-and-light-snow": "небольшой снег",
   "overcast-and-light-snow": "небольшой снег",
   "cloudy-and-snow": "снег"
+}
+
+export const windDir = {
+  "nw": "северо-западный",
+  "n": "северный",
+  "n»": "северо-восточный",
+  "e": "восточный",
+  "se": "юго-восточный",
+  "s": "южный",
+  "sw": "юго-западный",
+  "w": "западный",
+  "с": "штиль"
+}
+
+export const convertDate = (stringDate) => {
+  const date = new Date(stringDate);
+  const day = date.getDay();
+  const dayOfWeek = {
+    0: 'Вс',
+    1: 'Пн',
+    2: 'Вт',
+    3: 'Ср',
+    4: 'Чт',
+    5: 'Пт',
+    6: 'Сб',
+  };
+
+  return `${dayOfWeek[day]} ${date.toLocaleDateString().slice(0, -5)}`;
 }
 /*
 bkn_-ra_d — облачно с прояснениями, небольшой дождь (день)

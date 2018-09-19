@@ -19,6 +19,5 @@ export default ({ weather }) => {
         <Text>Ветер: {weather?.fact?.wind_speed} м/с</Text>
       </Wrapper>
     </div>
-
   )
 }
