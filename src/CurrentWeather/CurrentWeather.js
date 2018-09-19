@@ -15,7 +15,7 @@ export default ({ weather }) => {
         <Text>По ощущениям: {weather?.fact?.feels_like}</Text>
         <Text>{weatherTranslate[weather?.fact?.condition]}</Text>
         <Text>Давление: {weather?.fact?.pressure_mm} мм.рт.ст</Text>
-        <Text>Влажность: {weather?.fact?.humidity}</Text>
+        <Text>Влажность: {weather?.fact?.humidity} %</Text>
         <Text>Ветер: {weather?.fact?.wind_speed} м/с</Text>
       </Wrapper>
     </div>

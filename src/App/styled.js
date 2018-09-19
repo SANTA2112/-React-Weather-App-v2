@@ -8,4 +8,10 @@ export const Wrapper = styled.div`
     rgba(0,0,0,.3)) ,url(${({ bg }) => bg && bg}) center center/cover;
   padding: 30px 0 0 50px;
   position: relative;
+
+`;
+
+export const SmallWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;

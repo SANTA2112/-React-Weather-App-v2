@@ -1,10 +1,18 @@
 #!/bin/zsh
 
-printf "Please enter component name: > "
-read component_name
+# printf "Please enter component name: > "
+# read component_name
 
-if [[ -z $component_name ]]; then echo You don\'t typed anything && exit
+
+if [[ -z $1 ]]; then
+  printf "Please enter component name: > "
+  read component_name;
+else
+  component_name=$1
 fi
+
+## if [[ -z $component_name ]]; then echo You don\'t typed anything && exit
+## fi
 
 mkdir ./src/$component_name
 

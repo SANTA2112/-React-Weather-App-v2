@@ -15,7 +15,7 @@ const fetchCoordinates = city => getJSON(`${CORS_PROXY}${GEO_API_URL}${city}`)
   })
   .catch(e => ({ error: 'Bad response' }));
 
-export const fetchWeatherByCoord = ({lat, lng}) => getJSON(`${CORS_PROXY}${API_URL}?lat=${lat}&lon=${lng}&limit=5&hours=false&extra=false`, { headers: { 'X-Yandex-API-Key': TOKEN } });
+export const fetchWeatherByCoord = ({lat, lng}) => getJSON(`${CORS_PROXY}${API_URL}?lat=${lat}&lon=${lng}&limit=5&hours=true&extra=false`, { headers: { 'X-Yandex-API-Key': TOKEN } });
 
 export const fetchWeather = (city) => fetchCoordinates(city).then(resp => {
   if (resp.error) throw new Error();
