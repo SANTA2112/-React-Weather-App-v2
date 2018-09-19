@@ -29,12 +29,10 @@ export const InfoWrap = styled.div`
 
 export const UL = styled.ul`
   list-style: none;
+  cursor: pointer;
   margin-right: 30px;
   &:first-child {
     margin-left: 10px;
-  }
-  &:last-child {
-    margin-right: 0;
   }
 `;
 

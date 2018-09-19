@@ -5,7 +5,7 @@ import {
 } from "./styled";
 import { convertDate, weatherTranslate, windDir } from "../utils";
 
-const WeatherOnWeek = ({ weather }) => (
+const WeatherOnWeek = ({ weather, changeDay }) => (
   <Wrapper>
     <NotationBlock>
       <TextWrapper>
@@ -18,16 +18,16 @@ const WeatherOnWeek = ({ weather }) => (
       </TextWrapper>
     </NotationBlock>
     <InfoWrap>
-      {weather && weather.map(el => (
-        <UL key={el.date_ts}>
-        <Date>{convertDate(el.date)}</Date>
-        <Img src={`https://yastatic.net/weather/i/icons/blueye/color/svg/${el.parts.day.icon}.svg`} alt=""/>
-        <DayTemp>{el.parts.day.temp_min} / {el.parts.day.temp_max}</DayTemp>
-        <NightTemp>{el.parts.night.temp_avg}</NightTemp>
-        <li><SmallSpan>{weatherTranslate[el.parts.day.condition]}</SmallSpan></li>
-        <li><BoldSpan>{windDir[el.parts.day.wind_dir]}</BoldSpan>: <SmallSpan>{el.parts.day.wind_speed} м/с</SmallSpan></li>
-        <li>{el.parts.day.pressure_mm} <SmallSpan>мм.рт.ст</SmallSpan></li>
-      </UL>
+      {weather && weather.map((el, i) => (
+        <UL key={el.date_ts} onClick={() => changeDay(i)}>
+          <Date>{convertDate(el.date)}</Date>
+          <Img src={`https://yastatic.net/weather/i/icons/blueye/color/svg/${el.parts.day.icon}.svg`} alt=""/>
+          <DayTemp>{el.parts.day.temp_min} / {el.parts.day.temp_max}</DayTemp>
+          <NightTemp>{el.parts.night.temp_avg}</NightTemp>
+          <li><SmallSpan>{weatherTranslate[el.parts.day.condition]}</SmallSpan></li>
+          <li><BoldSpan>{windDir[el.parts.day.wind_dir]}</BoldSpan>: <SmallSpan>{el.parts.day.wind_speed} м/с</SmallSpan></li>
+          <li>{el.parts.day.pressure_mm} <SmallSpan>мм.рт.ст</SmallSpan></li>
+        </UL>
       ))}
     </InfoWrap>
   </Wrapper>

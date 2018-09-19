@@ -3,6 +3,9 @@ import styled from 'styled-components'
 export const UL = styled.ul`
   list-style: none;
   margin-right: 20px;
+  height: 76.5vh;
+  overflow-y: auto;
+  padding-right: 2px;
 `;
 
 export const UlItem = styled.li`
@@ -14,6 +17,7 @@ export const UlItem = styled.li`
   background-color: rgba(255,255,255,.3);
   padding: 12px;
   margin-top: 5px;
+  width: 400px;
   &:first-child {
     margin-top: 0;
   }

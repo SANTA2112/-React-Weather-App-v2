@@ -1,13 +1,11 @@
 import React from 'react';
-import { Wrapper } from "./styled";
+import { Wrapper, Input, SearchButton } from "./styled";
 
-const SearchBar = ({ doRequest, input, inputHandler, }) => {
-  return (
-    <Wrapper>
-      <input value={input} onChange={e => inputHandler(e.target.value)} type="text"/>
-      <button onClick={doRequest}>Get Weather</button>
-    </Wrapper>
-  )
-}
+const SearchBar = ({ doRequest, input, inputHandler, }) => (
+  <Wrapper>
+    <Input value={input} onChange={e => inputHandler(e.target.value)} type="text"/>
+    <SearchButton onClick={doRequest}>Get Weather</SearchButton>
+  </Wrapper>
+)
 
 export default SearchBar

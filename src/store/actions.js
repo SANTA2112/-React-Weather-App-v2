@@ -1,8 +1,9 @@
-import { GET_WEATHER, LOADED, LOADING } from './constants';
+import { GET_WEATHER, LOADED, LOADING, CHANGE_DAY } from './constants';
 import { fetchWeather, fetchWeatherByCoord } from '../API';
 
 export const loading = () => ({ type: LOADING });
 export const loaded = () => ({ type: LOADED });
+export const changeDay = (payload) => ({ type: CHANGE_DAY, payload });
 
 export const getWeather = (data, counter = 0) => dispatch => {
   dispatch(loading());

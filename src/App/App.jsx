@@ -17,7 +17,7 @@ export default ({ doRequest, weather, bgimg, isLoading }) => {
             <CurrentWeather weather={weather}/>
             <WeatherOnWeek weather={weather.forecasts}/>
           </div>
-          <WeatherOnHours weather={weather.forecasts && weather.forecasts[0]?.hours}/>
+          <WeatherOnHours weather={weather.forecasts && weather.forecasts}/>
         </SmallWrap>
         <SearchBar doRequest={doRequest}/>
         { weather.error && 'Ошибка, повторите запрос' }
