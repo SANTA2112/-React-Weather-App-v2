@@ -4,11 +4,11 @@ import Loader from '../Loader';
 import CurrentWeather from '../CurrentWeather';
 import WeatherOnWeek from '../WeatherOnWeek';
 import WeatherOnHours from '../WeatherOnHours';
+import SearchBar from '../SearchBar';
 
-export default ({ doRequest, weather, input, inputHandler, bgimg, isLoading }) => {
+export default ({ doRequest, weather, bgimg, isLoading }) => {
   //console.log(weather);
   if (isLoading) return <Loader />
-  console.log(weather)
   return (
     <div>
       <Wrapper bg={bgimg}>
@@ -19,8 +19,7 @@ export default ({ doRequest, weather, input, inputHandler, bgimg, isLoading }) =
           </div>
           <WeatherOnHours weather={weather.forecasts && weather.forecasts[0]?.hours}/>
         </SmallWrap>
-        <input value={input} onChange={e => inputHandler(e.target.value)} type="text"/>
-        <button onClick={doRequest}>Get Weather</button>
+        <SearchBar doRequest={doRequest}/>
         { weather.error && 'Ошибка, повторите запрос' }
       </Wrapper>
     </div>

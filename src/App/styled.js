@@ -6,7 +6,6 @@ export const Wrapper = styled.div`
   background:
     linear-gradient(to left, rgba(0,0,0,.3),
     rgba(0,0,0,.3)) ,url(${({ bg }) => bg && bg}) center center/cover;
-  padding: 30px 0 0 50px;
   position: relative;
 
 `;
@@ -14,4 +13,5 @@ export const Wrapper = styled.div`
 export const SmallWrap = styled.div`
   display: flex;
   justify-content: space-between;
+  padding: 30px 0 0 50px;
 `;
